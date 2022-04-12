@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# sh curl-scripts/auth/sign-up.sh
+
+EMAIL="trott@cic.com"
+PASSWORD="123"
+
 API="http://localhost:4741"
 URL_PATH="/sign-up"
 
