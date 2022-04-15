@@ -59,9 +59,11 @@ router.get('/workouts/:id', requireToken, (req, res, next) => {
 // POST /workouts
 router.post('/workouts', requireToken, (req, res, next) => {
   // set owner of new workout to be current user
-  req.body.workout.owner = req.user.id
+  const workout = req.body.workout
 
-  Workout.create(req.body.workout)
+  workout.owner = req.user.id
+
+  Workout.create(workout)
     // respond to succesful `create` with status 201 and JSON of new "workout"
     .then(workout => {
       res.status(201).json({ workout: workout.toObject() })
