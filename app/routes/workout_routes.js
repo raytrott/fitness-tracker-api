@@ -81,36 +81,31 @@ router.patch('/workouts/:id', requireToken, removeBlanks, (req, res, next) => {
   // owner, prevent that by deleting that key/value pair
   delete req.body.workout.owner
 
-  Workout.findById(req.params.id)
-    .then(handle404)
-    .then(workout => {
-      // pass the `req` object and the Mongoose record to `requireOwnership`
-      // it will throw an error if the current user isn't the owner
-      requireOwnership(req, workout)
+  const id = req.params.id
+  const workoutData = req.body.workout
 
-      // pass the result of Mongoose's `.update` to the next `.then`
-      return workout.updateOne(req.body.workout)
+  Workout.findById(id)
+    .then(handle404)
+    .then(workout => requireOwnership(req, workout))
+    .then(workout => {
+      Object.assign(workout, workoutData)
+      return workout.save()
     })
-    // if that succeeded, return 204 and no JSON
     .then(() => res.sendStatus(204))
-    // if an error occurs, pass it to the handler
     .catch(next)
 })
 
 // DESTROY
 // DELETE /workouts/5a7db6c74d55bc51bdf39793
 router.delete('/workouts/:id', requireToken, (req, res, next) => {
-  Workout.findById(req.params.id)
+  const id = req.params.id
+  Workout.findById(id)
     .then(handle404)
+    .then(workout => requireOwnership(req, workout))
     .then(workout => {
-      // throw an error if current user doesn't own `workout`
-      requireOwnership(req, workout)
-      // delete the workout ONLY IF the above didn't throw
       workout.deleteOne()
     })
-    // send back 204 and no content if the deletion succeeded
     .then(() => res.sendStatus(204))
-    // if an error occurs, pass it to the handler
     .catch(next)
 })
 
