@@ -1,17 +1,42 @@
-# Fitness Tracker
+# PeakFit - Track your workouts, reach peak fitness!
 
-## Technologies Used
-Express.js
+This is the backend repo for my full stack fitness tracker application, PeakFit! With PeakFit, one can log their workout by date, type, and exercises performed.
 
-## Introduction
+For this full-stack project assignment from General Assembly, I decided to create a fitness tracker. In my personal life, not only do I love staying active, but I'm especially passionate about tracking my workouts so that I have metrics to assess my performance and can continue to progress toward my goals over time. This app is an extension of that passion and I hope to continue developing and expanding its features in the future.
 
-This is the backend repo for my full stack Fitness Tracker application.
+To visit the deployed app online, [click here](https://raytrott.github.io/fitness-tracker-client/).
+
+To view the frontend repo, [click here](https://github.com/raytrott/fitness-tracker-client).
 
 ## Planning
 
-#### Wireframe & Entity Relationship Diagram (ERD)
+### Wireframe & Entity Relationship Diagram (ERD)
 
-In the planning of this process, I created a wireframe and ERD which can be viewed [here](https://i.imgur.com/ZVwXAfG.jpg).
+In the planning of this application, I created a wireframe and ERD which can be viewed [here](https://i.imgur.com/ZVwXAfG.jpg).
+
+### User Stories
+- As a user, I want to create an account.
+- As a user, I want to log into my account.
+- As a user, I want to change my password while signed in.
+- As a user, I want to sign out of my account when I'm done.
+- As a user, I want to track a workout by logging it in the app.
+- As a user, I want to view my logged workouts.
+- As a user, I want to edit my existing logged workout.
+- As a user, I want to delete my logged workout.
+
+### Technologies Used
+
+Backend:
+- Express.js
+- MongoDB
+- Mongoose
+- JavaScript
+
+Frontend:
+- jQuery
+- HTML/CSS
+- Bootstrap
+- JavaScript
 
 ## About Me
 
