@@ -14,8 +14,10 @@ const workoutSchema = new mongoose.Schema({
     required: true
   },
   exercises: {
-    type: Array
+    type: Array,
+    required: true
   },
+  // exercises: [exerciseSchema],
   owner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
@@ -24,5 +26,7 @@ const workoutSchema = new mongoose.Schema({
 }, {
   timestamps: true
 })
+
+// const exerciseSchema = 
 
 module.exports = mongoose.model('Workout', workoutSchema)

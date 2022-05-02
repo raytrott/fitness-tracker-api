@@ -49,6 +49,7 @@ router.get('/workouts/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Workout.findById(req.params.id)
     .then(handle404)
+    .then(workout => requireOwnership(req, workout))
     // if `findById` is succesful, respond with 200 and "workout" JSON
     .then(workout => res.status(200).json({ workout: workout.toObject() }))
     // if an error occurs, pass it to the handler
